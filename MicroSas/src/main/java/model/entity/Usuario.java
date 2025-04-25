@@ -1,12 +1,12 @@
 package model.entity;
 
 public class Usuario {
-	String nome;
-	String email;
-	String imagem;
-	String endereco;
+	private String nome;
+	private String email;
+	private String imagem;
+	private Endereco endereco;
 	
-	public Usuario(String nome, String email, String imagem, String endereco) {
+	public Usuario(String nome, String email, String imagem, Endereco endereco) {
 		setNome(nome);
 		setEmail(email);
 		setImagem(imagem);
@@ -31,10 +31,10 @@ public class Usuario {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}	
 }

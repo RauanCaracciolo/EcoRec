@@ -1,10 +1,10 @@
 package model.entity;
 
 public class Pedido {
-	String email_cliente;
-	String id_centro;
-	String descricao;
-	double valor;
+	private String email_cliente;
+	private String id_centro;
+	private String descricao;
+	private double valor;
 	
 	public Pedido(String email_cliente, String id_centro, String descricao, double valor) {
 		setEmail_cliente(email_cliente);
