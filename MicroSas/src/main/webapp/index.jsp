@@ -11,7 +11,11 @@
 		<input type="hidden" name="command" value="RegisterUser"> 
 		<label
 			for="nome">Nome: </label> <input type="text" name="nome"><br>
-		<br> <label for="email">Email: </label> <input type="email"
+		<br> 
+		<label
+			for="cpf">Cpf: </label> <input type="text" name="cpf"><br>
+		<br>
+		<label for="email">Email: </label> <input type="email"
 			name="email"><br> <br>
 			<label
 			for="nome">Senha: </label> <input type="text" name="senha"><br>

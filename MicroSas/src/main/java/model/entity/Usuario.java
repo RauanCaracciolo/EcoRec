@@ -2,6 +2,7 @@ package model.entity;
 
 public class Usuario {
 	private String nome;
+	private String cpf;
 	private String email;
 	private String senha;
 	private String imagem;
@@ -11,8 +12,9 @@ public class Usuario {
 	private String numero;
 	
 	
-	public Usuario(String nome, String email,String senha, String imagem, String cep, String cidade ,String rua, String numero) {
+	public Usuario(String nome, String cpf, String email,String senha, String imagem, String cep, String cidade ,String rua, String numero) {
 		setNome(nome);
+		setCpf(cpf);
 		setEmail(email);
 		setSenha(senha);
 		setImagem(imagem);
@@ -28,6 +30,15 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	public String getEmail() {
 		return email;
 	}
