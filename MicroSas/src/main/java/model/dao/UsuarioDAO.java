@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import model.entity.Usuario;
 
@@ -24,6 +25,34 @@ public class UsuarioDAO {
         }catch(Exception ex) {
         	ex.printStackTrace();
         }
-
+	}
+	public Usuario getByCpf(Connection conn, String cpf) {
+		Usuario usuario = null;
+		String sql = "select * from usuarios where cpf = ?";
+		if(!cpf.isEmpty() || cpf != null) {
+			try {
+				PreparedStatement smt = conn.prepareStatement(sql);
+				smt.setString(1, cpf);
+				ResultSet result = smt.executeQuery();
+				
+				if(result.next()) {
+					usuario = new Usuario(
+							result.getString("nome"),
+							result.getString("cpf"),
+							result.getString("senha"),
+							result.getString("email"),
+							result.getString("imagem"),
+							result.getString("cep"),
+							result.getString("cidade"),
+							result.getString("rua"),
+							result.getString("numeo")
+						);
+				}
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			
+		}
+		return usuario;
 	}
 }

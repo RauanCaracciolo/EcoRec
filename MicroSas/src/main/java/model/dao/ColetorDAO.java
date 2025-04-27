@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import model.entity.Coletor;
 
@@ -20,6 +21,30 @@ public class ColetorDAO {
         }catch(Exception ex) {
         	ex.printStackTrace();
         }
-
+	}
+	public Coletor getByCpf(Connection conn, String cpf) {
+		Coletor coletor = null;
+		String sql = "select * from coletores where cpf = ?";
+		if(!cpf.isEmpty() || cpf != null) {
+			try {
+				PreparedStatement smt = conn.prepareStatement(sql);
+				smt.setString(1, cpf);
+				ResultSet result = smt.executeQuery();
+				
+				if(result.next()) {
+					coletor = new Coletor(
+							result.getString("nome"),
+							result.getString("cpf"),
+							result.getString("senha"),
+							result.getString("email"),
+							result.getString("imagem")
+						);
+				}
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			
+		}
+		return coletor;
 	}
 }
