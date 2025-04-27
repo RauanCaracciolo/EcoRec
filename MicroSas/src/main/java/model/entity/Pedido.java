@@ -1,29 +1,29 @@
 package model.entity;
 
 public class Pedido {
-	private String email_cliente;
-	private String id_centro;
+	private String cpf_cliente;
+	private String cpf_coletor;
 	private String descricao;
 	private double valor;
 	
-	public Pedido(String email_cliente, String id_centro, String descricao, double valor) {
-		setEmail_cliente(email_cliente);
-		setId_centro(id_centro);
+	public Pedido(String cpf_cliente, String cpf_coletor, String descricao, double valor) {
+		setCpf_cliente(cpf_cliente);
+		setCpf_coletor(cpf_coletor);
 		setDescricao(descricao);
 		setValor(valor);
 	}
 	
-	public String getEmail_cliente() {
-		return email_cliente;
+	public String getCpf_cliente() {
+		return cpf_cliente;
 	}
-	public void setEmail_cliente(String email_cliente) {
-		this.email_cliente = email_cliente;
+	public void setCpf_cliente(String cpf_cliente) {
+		this.cpf_cliente = cpf_cliente;
 	}
-	public String getId_centro() {
-		return id_centro;
+	public String getCpf_coletor() {
+		return cpf_coletor;
 	}
-	public void setId_centro(String id_centro) {
-		this.id_centro = id_centro;
+	public void setCpf_coletor(String cpf_coletor) {
+		this.cpf_coletor = cpf_coletor;
 	}
 	public String getDescricao() {
 		return descricao;

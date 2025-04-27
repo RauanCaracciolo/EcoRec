@@ -11,8 +11,9 @@ public class CommandFactory {
 		}else {
 			switch(action) {
 				case"RegisterUser":  			
-					System.out.println("Default command");
 					return new RegisterUserCommand(); 
+				case"RegisterColetor":
+					return new RegisterColetorCommand();
 				default: return new DefaultCommand();
 			}	
 		}
