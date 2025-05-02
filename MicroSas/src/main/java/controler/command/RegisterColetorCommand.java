@@ -42,8 +42,9 @@ public class RegisterColetorCommand implements Command {
 		Connection conn = null;
 		try {
 			conn = ConnectionFactory.getConnection();
-			dao.cadastrar(conn, new Coletor(nome, cpf, email, senha, imagem));
+			dao.cadastrar(conn, new Coletor(nome, cpf, senha, email, imagem));
 			conn.close();
+			response.sendRedirect("index.jsp");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

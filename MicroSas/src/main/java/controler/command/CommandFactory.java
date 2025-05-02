@@ -10,6 +10,8 @@ public class CommandFactory {
 			return new DefaultCommand();
 		}else {
 			switch(action) {
+				case"Login":
+					return new LoginCommand();
 				case"RegisterUser":  			
 					return new RegisterUserCommand(); 
 				case"RegisterColetor":

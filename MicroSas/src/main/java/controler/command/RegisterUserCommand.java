@@ -47,6 +47,7 @@ public class RegisterUserCommand implements Command {
 			conn = ConnectionFactory.getConnection();
 			dao.cadastrar(conn, new Usuario(nome, cpf, email, senha, imagem, cep, cidade, rua, numero));
 			conn.close();
+			response.sendRedirect("index.jsp");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

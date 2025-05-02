@@ -37,9 +37,7 @@ public class FrontController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String command = request.getParameter("command");
-		String nome = request.getParameter("nome");
 		System.out.print(command);
-		System.out.println(nome);
     	//Envia a requisição e o parametro para a factory de Command
         CommandFactory.getCommand(command, request, response).execute(request, response);
 	}

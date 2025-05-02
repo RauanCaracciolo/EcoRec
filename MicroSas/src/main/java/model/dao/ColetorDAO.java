@@ -8,14 +8,14 @@ import model.entity.Coletor;
 
 public class ColetorDAO {
 	public void cadastrar(Connection conn, Coletor c) {
-        String sql = "insert into coletores (nome, cpf, email, senha, imagem) values (?, ?, ?, ?, ?)";	
+        String sql = "insert into coletores (nome, cpf, senha, email, imagem) values (?, ?, ?, ?, ?)";	
 
         try{
         	PreparedStatement smt = conn.prepareStatement(sql);
         	smt.setString(1, c.getNome());
         	smt.setString(2, c.getCpf());
-        	smt.setString(3, c.getEmail());
-        	smt.setString(4, c.getSenha());
+        	smt.setString(3, c.getSenha());
+        	smt.setString(4, c.getEmail());
         	smt.setString(5, c.getImagem());
         	smt.execute();
         }catch(Exception ex) {
@@ -46,5 +46,17 @@ public class ColetorDAO {
 			
 		}
 		return coletor;
+	}
+	public Coletor validarLogin(Connection conn, String cpf, String senha) {
+		Coletor c = getByCpf(conn, cpf);
+		if(c != null) {
+			System.out.println("Senha digitada: [" + senha + "]");
+			System.out.println("Senha do banco: [" + c.getSenha() + "]");
+
+			if(c.getSenha().equals(senha)) {
+				return c;
+			}
+		}
+		return null;
 	}
 }

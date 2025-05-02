@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import model.entity.Coletor;
 import model.entity.Usuario;
 
 public class UsuarioDAO {
@@ -29,7 +30,7 @@ public class UsuarioDAO {
 	public Usuario getByCpf(Connection conn, String cpf) {
 		Usuario usuario = null;
 		String sql = "select * from usuarios where cpf = ?";
-		if(!cpf.isEmpty() || cpf != null) {
+		if(cpf != null && !cpf.isEmpty()) {
 			try {
 				PreparedStatement smt = conn.prepareStatement(sql);
 				smt.setString(1, cpf);
@@ -39,13 +40,13 @@ public class UsuarioDAO {
 					usuario = new Usuario(
 							result.getString("nome"),
 							result.getString("cpf"),
-							result.getString("senha"),
 							result.getString("email"),
+							result.getString("senha"),
 							result.getString("imagem"),
 							result.getString("cep"),
 							result.getString("cidade"),
 							result.getString("rua"),
-							result.getString("numeo")
+							result.getString("numero")
 						);
 				}
 			}catch(Exception ex) {
@@ -54,5 +55,16 @@ public class UsuarioDAO {
 			
 		}
 		return usuario;
+	}
+	public Usuario validarLogin(Connection conn, String cpf, String senha) {
+		Usuario u = getByCpf(conn, cpf);
+		if(u != null) {
+			
+			if (u.getSenha().equals(senha)) {
+				return u;
+			} else {
+			}
+		}
+		return null;
 	}
 }

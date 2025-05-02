@@ -15,8 +15,14 @@
 			<label
 			for="nome">Senha: </label> <input type="text" name="senha"><br>
 		<br> 
+		<label for="tipo">Escolha seu tipo de conta:</label>
+		<select name="tipo">
+			<option value="usuario">Usuario</option>
+			<option value="coletor">Coletor</option>
+		</select>
 		<input type="submit" value="Logar">
 	</form>
+	<p><% out.println(request.getAttribute("erro")); %></p>
 	<a href="escolhaCadastro.html"><button>Não possui conta? Clique aqui para se cadastrar.</button></a>
 </body>
 </html>
