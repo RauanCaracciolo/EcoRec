@@ -16,6 +16,8 @@ public class CommandFactory {
 					return new RegisterUserCommand(); 
 				case"RegisterColetor":
 					return new RegisterColetorCommand();
+				case"RegisterPedido":
+					return new RegisterPedidoCommand();
 				default: return new DefaultCommand();
 			}	
 		}
