@@ -35,10 +35,18 @@ public class FrontController extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String command = request.getParameter("command");
-		System.out.print(command);
-    	//Envia a requisição e o parametro para a factory de Command
-        CommandFactory.getCommand(command, request, response).execute(request, response);
+	        throws ServletException, IOException {
+	    String command = request.getParameter("command");
+	    System.out.println(command);
+
+	    String path = CommandFactory.getCommand(command, request, response).execute(request, response);
+
+	    if (path != null) {
+	        if (path.startsWith("redirect:")) {
+	            response.sendRedirect(path.replace("redirect:", ""));
+	        } else {
+	            request.getRequestDispatcher(path).forward(request, response);
+	        }
+	    }
 	}
 }

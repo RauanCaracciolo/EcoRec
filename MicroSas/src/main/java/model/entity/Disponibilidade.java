@@ -8,6 +8,13 @@ public class Disponibilidade {
     private LocalDateTime horario;
     private String estado;
 
+    public Disponibilidade(int id, String cpfColetor, LocalDateTime horario, String estado) {
+        setId(id);
+    	setCpfColetor(cpfColetor);
+        setHorario(horario);
+        setEstado(estado);
+    }
+
 
     public Disponibilidade(String cpfColetor, LocalDateTime horario, String estado) {
         setCpfColetor(cpfColetor);

@@ -12,7 +12,7 @@ import model.dao.DisponibilidadeDAO;
 import model.entity.Coletor;
 import model.entity.Disponibilidade;
 
-public class  GetMyDisponibilidades implements Command {
+public class GetMyDisponibilidades implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,15 +23,13 @@ public class  GetMyDisponibilidades implements Command {
                 DisponibilidadeDAO dao = new DisponibilidadeDAO();
                 List<Disponibilidade> lista = dao.listarPorColetor(conn, coletor.getCpf());
                 request.setAttribute("disponibilidades", lista);
-                request.getRequestDispatcher("coletor/disponibilidades.jsp").forward(request, response);
-                
+                return "coletor/disponibilidades.jsp";
             } catch (Exception e) {
                 e.printStackTrace();
-                response.sendRedirect("erro.jsp");
+                return "erro.jsp";
             }
         } else {
-            response.sendRedirect("index.jsp");
+            return "index.jsp";
         }
-        return "Sucesso";
     }
 }

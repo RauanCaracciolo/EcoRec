@@ -31,6 +31,7 @@ public class DisponibilidadeDAO {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				lista.add(new Disponibilidade(
+						rs.getInt("id"),
 						rs.getString("cpf_coletor"),
 						rs.getTimestamp("horario").toLocalDateTime(),
 						rs.getString("estado")));
