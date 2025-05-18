@@ -12,9 +12,6 @@
 		<label
 			for="nome">Nome: </label> <input type="text" name="nome"><br>
 		<br> 
-		<label
-			for="cpf">Cpf: </label> <input type="text" name="cpf"><br>
-		<br>
 		<label for="email">Email: </label> <input type="email"
 			name="email"><br> <br>
 			<label
@@ -23,8 +20,15 @@
 
 		<p>Endereço:</p>
 		<label for="cep">CEP: </label> <input type="text" name="cep"><br>
-		<br> <label for="cidade">Cidade:</label> <input type="text"
-			name="cidade"><br> <label for="rua">Rua: </label> <input
+		<br> <label for="cidade">Cidade:</label> 
+		
+		<select name="cidade">
+			<option value="Araraquara">Araraquara</option>
+			<option value="São Carlos">São Carlos</option>
+			<option value="Ibaté">Ibaté</option>
+		</select>
+		
+		<label for="rua">Rua: </label> <input
 			type="text" name="rua"><br> <br> <label
 			for="numero">Numero: </label> <input type="text" name="numero"><br>
 		<br> <br> <label for="foto">Foto:</label> <input type="file"

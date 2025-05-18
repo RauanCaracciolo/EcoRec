@@ -18,7 +18,7 @@ public class LoginCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String cpf = request.getParameter("cpf");
+		String cpf = request.getParameter("key");
 		String senha = request.getParameter("senha");
 		String tipo = request.getParameter("tipo");
 		System.out.println(cpf + senha);
@@ -49,7 +49,7 @@ public class LoginCommand implements Command {
 				Connection conn = ConnectionFactory.getConnection();
 				Usuario u = dao.validarLogin(conn, cpf, senha);
 				if(u != null) {				
-					System.out.println(u.getCpf());
+					System.out.println(u.getEmail());
 					HttpSession session = request.getSession();
 					session.setAttribute("usuarioLogado", u);
 					session.setAttribute("mensagem", "Bem vindo Usuario!");

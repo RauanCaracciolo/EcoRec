@@ -25,7 +25,6 @@ public class RegisterUserCommand implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nome = request.getParameter("nome");
-		String cpf = request.getParameter("cpf");
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		Part fotoPart = request.getPart("foto");
@@ -45,7 +44,7 @@ public class RegisterUserCommand implements Command {
 		Connection conn = null;
 		try {
 			conn = ConnectionFactory.getConnection();
-			dao.cadastrar(conn, new Usuario(nome, cpf, email, senha, imagem, cep, cidade, rua, numero));
+			dao.cadastrar(conn, new Usuario(nome, email, senha, imagem, cep, cidade, rua, numero));
 			conn.close();
 			response.sendRedirect("index.jsp");
 		}catch(Exception ex) {

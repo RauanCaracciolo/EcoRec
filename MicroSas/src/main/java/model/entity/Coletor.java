@@ -7,7 +7,7 @@ public class Coletor {
 	private String email;
 	private String imagem;
 	
-	public Coletor(String nome, String cpf,  String senha, String email, String imagem) {
+	public Coletor(String nome, String cpf, String senha, String email, String imagem) {
 		setNome(nome);
 		setCpf(cpf);
 		setSenha(senha);

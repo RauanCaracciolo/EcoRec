@@ -10,6 +10,14 @@ public class Pedido {
 	private LocalDateTime horario;
 	private String estado;
 	
+	public Pedido(int id, String cpf_usuario, String descricao, LocalDateTime horario, String estado) {
+		setId(id);
+		setCpf_usuario(cpf_usuario);
+		setDescricao(descricao);
+		setHorario(horario);
+		setEstado(estado);
+	}
+	
 	public Pedido(String cpf_usuario, String descricao, LocalDateTime horario) {
 		setCpf_usuario(cpf_usuario);
 		setDescricao(descricao);

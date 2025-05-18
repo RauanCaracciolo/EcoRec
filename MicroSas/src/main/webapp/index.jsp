@@ -10,7 +10,7 @@
 	<form action="FrontController" method="post">
 		<input type="hidden" name="command" value="Login"> 
 		<label
-			for="cpf">Cpf: </label> <input type="text" name="cpf"><br>
+			for="key">Cpf(Coletor) ou Email(Usuario): </label> <input type="text" name="key"><br>
 		<br>
 			<label
 			for="nome">Senha: </label> <input type="text" name="senha"><br>

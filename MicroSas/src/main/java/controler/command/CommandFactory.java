@@ -18,6 +18,14 @@ public class CommandFactory {
 					return new RegisterColetorCommand();
 				case"RegisterPedido":
 					return new RegisterPedidoCommand();
+				case"GetPedidos":
+					return new GetPedidosCommand();
+				case"RegisterDisponibilidade":
+					return new RegisterDisponibilidadeCommand();
+				case"DeleteDisponibilidade":
+					return new DeleteDisponibilidadeCommand();
+				case"GetMyDisponibilidades":
+					return new GetMyDisponibilidades();
 				default: return new DefaultCommand();
 			}	
 		}
