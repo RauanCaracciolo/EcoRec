@@ -26,7 +26,7 @@
 			<option value="Araraquara">Araraquara</option>
 			<option value="São Carlos">São Carlos</option>
 			<option value="Ibaté">Ibaté</option>
-		</select>
+		</select><br>
 		
 		<label for="rua">Rua: </label> <input
 			type="text" name="rua"><br> <br> <label

@@ -26,6 +26,8 @@ public class CommandFactory {
 					return new DeleteDisponibilidadeCommand();
 				case"GetMyDisponibilidades":
 					return new GetMyDisponibilidades();
+				case"GetColetoresByCidade":
+					return new GetColetoresByCidade();
 				default: return new DefaultCommand();
 			}	
 		}

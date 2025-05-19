@@ -5,13 +5,15 @@ public class Coletor {
 	private String cpf;
 	private String senha;
 	private String email;
+	private String cidade;
 	private String imagem;
 	
-	public Coletor(String nome, String cpf, String senha, String email, String imagem) {
+	public Coletor(String nome, String cpf, String senha, String email, String cidade, String imagem) {
 		setNome(nome);
 		setCpf(cpf);
 		setSenha(senha);
 		setEmail(email);
+		setCidade(cidade);
 		setImagem(imagem);
 	}
 	public String getNome() {
@@ -38,6 +40,12 @@ public class Coletor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+		}
 	public String getImagem() {
 		return imagem;
 	}

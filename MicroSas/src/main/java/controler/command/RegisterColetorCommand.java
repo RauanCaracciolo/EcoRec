@@ -29,6 +29,7 @@ public class RegisterColetorCommand implements Command {
 		String cpf = request.getParameter("cpf");
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
+		String cidade = request.getParameter("cidade");
 		Part fotoPart = request.getPart("foto");
 		String contentType = fotoPart.getContentType();
 		if (!tiposPermitidos.contains(contentType)) {
@@ -42,7 +43,7 @@ public class RegisterColetorCommand implements Command {
 		Connection conn = null;
 		try {
 			conn = ConnectionFactory.getConnection();
-			dao.cadastrar(conn, new Coletor(nome, cpf, senha, email, imagem));
+			dao.cadastrar(conn, new Coletor(nome, cpf, senha, email, cidade, imagem));
 			conn.close();
 			response.sendRedirect("index.jsp");
 		}catch(Exception ex) {

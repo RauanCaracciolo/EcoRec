@@ -22,7 +22,6 @@
 		</select>
 		<input type="submit" value="Logar">
 	</form>
-	<p><% out.println(request.getAttribute("erro")); %></p>
 	<a href="escolhaCadastro.html"><button>Não possui conta? Clique aqui para se cadastrar.</button></a>
 </body>
 </html>
