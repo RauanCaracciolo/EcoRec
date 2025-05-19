@@ -41,6 +41,29 @@ public class DisponibilidadeDAO {
 		}
 		return lista;
 	}
+	public List<Disponibilidade> listarLivresPorColetor(Connection conn, String cpfColetor) {
+	    List<Disponibilidade> lista = new ArrayList<>();
+	    String sql = "select * from disponibilidades where cpf_coletor = ? and estado = 'livre' order by horario";
+
+	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+	        stmt.setString(1, cpfColetor);
+	        ResultSet rs = stmt.executeQuery();
+
+	        while (rs.next()) {
+	            Disponibilidade d = new Disponibilidade(
+	                rs.getInt("id"),
+	                rs.getString("cpf_coletor"),
+	                rs.getTimestamp("horario").toLocalDateTime(),
+	                rs.getString("estado")
+	            );
+	            lista.add(d);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return lista;
+	}
 	public void remover(Connection conn, int id) {
 	    String sql = "delete from disponibilidades where id = ?";
 	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {

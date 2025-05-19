@@ -28,6 +28,8 @@ public class CommandFactory {
 					return new GetMyDisponibilidades();
 				case"GetColetoresByCidade":
 					return new GetColetoresByCidade();
+				case"VerColetor":
+					return new VerColetorCommand();
 				default: return new DefaultCommand();
 			}	
 		}
