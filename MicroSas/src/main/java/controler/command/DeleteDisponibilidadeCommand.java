@@ -20,11 +20,10 @@ public class DeleteDisponibilidadeCommand implements Command {
             DisponibilidadeDAO dao = new DisponibilidadeDAO();
             dao.remover(conn, id);
 
-            response.sendRedirect("FrontController?command=GetMyDisponibilidades");
+            return "redirect:FrontController?command=GetMyDisponibilidades";
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("erro.jsp");
+            return "erro.jsp";
         }
-        return null;
     }
 }

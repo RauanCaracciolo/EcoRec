@@ -29,11 +29,10 @@ public class RegisterDisponibilidadeCommand implements Command {
             DisponibilidadeDAO dao = new DisponibilidadeDAO();
             dao.cadastrar(conn, d);
 
-            response.sendRedirect("FrontController?command=GetMyDisponibilidades");
+            return "redirect:FrontController?command=GetMyDisponibilidades";
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("erro.jsp");
+            return "erro.jsp";
         }
-        return null;
     }
 }

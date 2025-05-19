@@ -22,14 +22,14 @@ public class GetMyDisponibilidades implements Command {
             try (Connection conn = ConnectionFactory.getConnection()) {
                 DisponibilidadeDAO dao = new DisponibilidadeDAO();
                 List<Disponibilidade> lista = dao.listarPorColetor(conn, coletor.getCpf());
-                request.setAttribute("disponibilidades", lista);
-                return "coletor/disponibilidades.jsp";
+                request.getSession().setAttribute("disponibilidades", lista);
+                return "redirect:coletor/disponibilidades.jsp";
             } catch (Exception e) {
                 e.printStackTrace();
-                return "erro.jsp";
+                return "redirect:erro.jsp";
             }
         } else {
-            return "index.jsp";
+            return "redirect:index.jsp";
         }
     }
 }
