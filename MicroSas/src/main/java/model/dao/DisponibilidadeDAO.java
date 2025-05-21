@@ -73,5 +73,35 @@ public class DisponibilidadeDAO {
 	        e.printStackTrace();
 	    }
 	}
+	public Disponibilidade getById(Connection conn, int id) {
+	    String sql = "select * from disponibilidades where id = ?";
+	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+	        stmt.setInt(1, id);
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            return new Disponibilidade(
+	                rs.getInt("id"),
+	                rs.getString("cpf_coletor"),
+	                rs.getTimestamp("horario").toLocalDateTime(),
+	                rs.getString("estado")
+	            );
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
+
+	public void atualizar(Connection conn, Disponibilidade d) {
+	    String sql = "update disponibilidades set estado = ? where id = ?";
+	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+	        stmt.setString(1, d.getEstado());
+	        stmt.setInt(2, d.getId());
+	        stmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
 
 }

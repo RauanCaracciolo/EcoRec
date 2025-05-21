@@ -16,8 +16,6 @@ public class CommandFactory {
 					return new RegisterUserCommand(); 
 				case"RegisterColetor":
 					return new RegisterColetorCommand();
-				case"RegisterPedido":
-					return new RegisterPedidoCommand();
 				case"GetPedidos":
 					return new GetPedidosCommand();
 				case"RegisterDisponibilidade":
@@ -30,6 +28,10 @@ public class CommandFactory {
 					return new GetColetoresByCidade();
 				case"VerColetor":
 					return new VerColetorCommand();
+				case"SolicitarHorario":
+					return new SolicitarHorarioCommand();
+				case"ListarPedidos":
+					return new ListarPedidosCommand();
 				default: return new DefaultCommand();
 			}	
 		}

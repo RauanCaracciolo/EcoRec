@@ -11,9 +11,9 @@ import model.entity.Pedido;
 
 public class PedidoDAO {
 	public void cadastrar(Connection conn, Pedido p) {
-		String sql = "insert into pedidos (cpf_usuario, descricao, horario, estado) values (?, ?, ?, ?)";
+		String sql = "insert into pedidos (email_usuario, descricao, horario, estado) values (?, ?, ?, ?)";
 	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-	        stmt.setString(1, p.getCpf_usuario());
+	    	stmt.setString(1, p.getEmail_usuario());
 	        stmt.setString(2, p.getDescricao());
 	        stmt.setTimestamp(3, Timestamp.valueOf(p.getHorario()));
 	        stmt.setString(4, p.getEstado());
@@ -31,7 +31,8 @@ public class PedidoDAO {
 		while (rs.next()) {
             Pedido p = new Pedido(
                 rs.getInt("id"),
-                rs.getString("cpf_usuario"),
+                rs.getString("email_usuario"),
+                rs.getString("cpf_coletor"),
                 rs.getString("descricao"),
                 rs.getTimestamp("horario").toLocalDateTime(),
                 rs.getString("estado")
@@ -53,7 +54,8 @@ public class PedidoDAO {
 		while (rs.next()) {
             Pedido p = new Pedido(
                 rs.getInt("id"),
-                rs.getString("cpf_usuario"),
+                rs.getString("email_usuario"),
+                rs.getString("cpf_coletor"),
                 rs.getString("descricao"),
                 rs.getTimestamp("horario").toLocalDateTime(),
                 rs.getString("estado")
@@ -66,4 +68,30 @@ public class PedidoDAO {
 		}
 		return pedidos;
 	}
+	public List<Pedido> listarPorColetorEEstado(Connection conn, String cpfColetor, String estado) {
+	    List<Pedido> pedidos = new ArrayList<>();
+	    String sql = "select * from pedidos where cpf_coletor = ? and estado = ?";
+	    
+	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+	        stmt.setString(1, cpfColetor);
+	        stmt.setString(2, estado);
+	        ResultSet rs = stmt.executeQuery();
+
+	        while (rs.next()) {
+	            pedidos.add(new Pedido(
+	                rs.getInt("id"),
+	                rs.getString("email_usuario"),
+	                rs.getString("cpf_coletor"),
+	                rs.getString("descricao"),
+	                rs.getTimestamp("horario").toLocalDateTime(),
+	                rs.getString("estado")
+	            ));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return pedidos;
+	}
+
 }

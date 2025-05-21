@@ -4,25 +4,27 @@ import java.time.LocalDateTime;
 
 public class Pedido {
 	private int id;
-	private String cpf_usuario;
+	private String email_usuario;
 	private String cpf_coletor;
 	private String descricao;
 	private LocalDateTime horario;
 	private String estado;
-	
-	public Pedido(int id, String cpf_usuario, String descricao, LocalDateTime horario, String estado) {
+
+	public Pedido(int id, String email_usuario, String cpf_coletor, String descricao, LocalDateTime horario, String estado) {
 		setId(id);
-		setCpf_usuario(cpf_usuario);
+		setEmail_usuario(email_usuario);
+		setCpf_coletor(cpf_coletor);
 		setDescricao(descricao);
 		setHorario(horario);
 		setEstado(estado);
 	}
 	
-	public Pedido(String cpf_usuario, String descricao, LocalDateTime horario) {
-		setCpf_usuario(cpf_usuario);
+	public Pedido(String cpf_usuario, String cpf_coletor, String descricao, LocalDateTime horario, String estado) {
+		setEmail_usuario(cpf_usuario);
+		setCpf_coletor(cpf_coletor);
 		setDescricao(descricao);
 		setHorario(horario);
-		setEstado("pendente");
+		setEstado(estado);
 	}
 
 		public void atualizaEstado() {
@@ -59,11 +61,11 @@ public class Pedido {
 	}
 
 
-	public String getCpf_usuario() {
-		return cpf_usuario;
+	public String getEmail_usuario() {
+		return email_usuario;
 	}
-	public void setCpf_usuario(String cpf_usuario) {
-		this.cpf_usuario = cpf_usuario;
+	public void setEmail_usuario(String cpf_usuario) {
+		this.email_usuario = cpf_usuario;
 	}
 	public String getCpf_coletor() {
 		return cpf_coletor;
