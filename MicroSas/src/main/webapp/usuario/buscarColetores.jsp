@@ -3,8 +3,8 @@
 <%@ page import="model.entity.Coletor"%>
 
 <%
-List<Coletor> coletores = (List<Coletor>) request.getAttribute("coletores");
-String cidade = (String) request.getAttribute("cidade");
+List<Coletor> coletores = (List<Coletor>) session.getAttribute("coletores");
+String cidade = (String) session.getAttribute("cidade");
 %>
 
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ String cidade = (String) request.getAttribute("cidade");
 		%>
 		<tr>
 			<td><a
-				href="FrontController?command=VerColetor&cpf=<%=c.getCpf()%>">
+				href="../FrontController?command=VerColetor&cpf=<%=c.getCpf()%>">
 					<%=c.getNome()%>
 			</a></td>
 			<td><%=c.getEmail()%></td>

@@ -11,14 +11,17 @@ import model.entity.Pedido;
 
 public class PedidoDAO {
 	public void cadastrar(Connection conn, Pedido p) {
-		String sql = "insert into pedidos (email_usuario, descricao, horario, estado) values (?, ?, ?, ?)";
-	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-	    	stmt.setString(1, p.getEmail_usuario());
-	        stmt.setString(2, p.getDescricao());
-	        stmt.setTimestamp(3, Timestamp.valueOf(p.getHorario()));
-	        stmt.setString(4, p.getEstado());
-	        stmt.executeUpdate();
-	    } catch (Exception e) {
+		String sql = "insert into pedidos (email_usuario, cpf_coletor, descricao, horario, estado, id_disponibilidade) values (?, ?, ?, ?, ?, ?)";
+
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+		    stmt.setString(1, p.getEmail_usuario());
+		    stmt.setString(2, p.getCpf_coletor());
+		    stmt.setString(3, p.getDescricao());
+		    stmt.setTimestamp(4, Timestamp.valueOf(p.getHorario()));
+		    stmt.setString(5, p.getEstado());
+		    stmt.setInt(6, p.getId_dispo());
+		    stmt.executeUpdate();
+		}catch (Exception e) {
 	        e.printStackTrace();
 	    }
 	}
@@ -31,6 +34,7 @@ public class PedidoDAO {
 		while (rs.next()) {
             Pedido p = new Pedido(
                 rs.getInt("id"),
+                rs.getInt("id_disponibilidade"),
                 rs.getString("email_usuario"),
                 rs.getString("cpf_coletor"),
                 rs.getString("descricao"),
@@ -54,6 +58,7 @@ public class PedidoDAO {
 		while (rs.next()) {
             Pedido p = new Pedido(
                 rs.getInt("id"),
+                rs.getInt("id_disponibilidade"),
                 rs.getString("email_usuario"),
                 rs.getString("cpf_coletor"),
                 rs.getString("descricao"),
@@ -80,6 +85,7 @@ public class PedidoDAO {
 	        while (rs.next()) {
 	            pedidos.add(new Pedido(
 	                rs.getInt("id"),
+	                rs.getInt("id_disponibilidade"),
 	                rs.getString("email_usuario"),
 	                rs.getString("cpf_coletor"),
 	                rs.getString("descricao"),

@@ -11,7 +11,7 @@
     
     <%
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
-        String cpfUsuario = (usuarioLogado != null) ? usuarioLogado.getCpf() : "";
+        String cpfUsuario = (usuarioLogado != null) ? usuarioLogado.getEmail() : "";
     %>
 
     <p>CPF do usuário logado: <%= cpfUsuario %></p>

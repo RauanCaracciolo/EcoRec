@@ -13,21 +13,20 @@ import model.entity.Coletor;
 
 public class GetColetoresByCidade implements Command {
 
-	@Override   
-	public String execute(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String cidade = request.getParameter("cidade");
 
         try (Connection conn = ConnectionFactory.getConnection()) {
             ColetorDAO dao = new ColetorDAO();
             List<Coletor> lista = dao.getColetorByCidade(conn, cidade);
-            request.setAttribute("coletores", lista);
-            request.setAttribute("cidade", cidade);
-            return "usuario/buscarColetores.jsp";
+            request.getSession().setAttribute("coletores", lista);
+            request.getSession().setAttribute("cidade", cidade);
+            return "redirect:" + request.getContextPath() + "/usuario/buscarColetores.jsp";
         } catch (Exception e) {
             e.printStackTrace();
-            return "erro.jsp";
+            return "redirect:" + request.getContextPath() + "/erro.jsp";
         }
     }
 }
-
