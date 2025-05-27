@@ -52,12 +52,14 @@ public class ColetorDAO {
 		}
 		return coletor;
 	}
-	public List<Coletor> getColetorByCidade(Connection conn, String cidade){
+	public List<Coletor> getColetorByCidade(Connection conn, String cidade, int pagina){
 		List<Coletor> lista = new ArrayList<>();
-		String sql = "select * from coletores where cidade = ?";
+		int offset = (pagina-1)*5;
+		String sql = "select * from coletores where cidade = ? limit  5 offset ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, cidade);
+			stmt.setInt(2, offset);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				lista.add(new Coletor(

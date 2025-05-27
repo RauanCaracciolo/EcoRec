@@ -1,27 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Cadastro de Usuario</title>
+    <meta charset="UTF-8">
+    <title>Login - ReciclaFácil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+       <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<form action="FrontController" method="post">
-		<input type="hidden" name="command" value="Login"> 
-		<label
-			for="key">Cpf(Coletor) ou Email(Usuario): </label> <input type="text" name="key"><br>
-		<br>
-			<label
-			for="nome">Senha: </label> <input type="text" name="senha"><br>
-		<br> 
-		<label for="tipo">Escolha seu tipo de conta:</label>
-		<select name="tipo">
-			<option value="usuario">Usuario</option>
-			<option value="coletor">Coletor</option>
-		</select>
-		<input type="submit" value="Logar">
-	</form>
-	<a href="escolhaCadastro.html"><button>Não possui conta? Clique aqui para se cadastrar.</button></a>
+    <div class="container">
+        <div class="form-container">
+            <h3 class="text-center title-text">Login - ReciclaFácil</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command" value="Login">
+                <div class="mb-3">
+                    <label for="key" class="form-label">CPF (Coletor) ou Email (Usuário)</label>
+                    <input type="text" name="key" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" name="senha" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">Tipo de Conta</label>
+                    <select name="tipo" class="form-select" required>
+                        <option value="usuario">Usuário</option>
+                        <option value="coletor">Coletor</option>
+                    </select>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-green">Entrar</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a href="escolhaCadastro.html" class="btn btn-outline-success">Não possui conta? Cadastre-se</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
