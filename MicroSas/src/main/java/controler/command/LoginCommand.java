@@ -33,12 +33,12 @@ public class LoginCommand implements Command {
 					session.setAttribute("coletorLogado", c);
 					session.setAttribute("mensagem", "Bem vindo coletor!");
 					System.out.println("Entrou no LoginColetor");
-					response.sendRedirect("coletor/loginSucess.jsp");
+					conn.close();
+					return "redirect:coletor/dashboard_coletor.jsp";
 				}else {
-					request.setAttribute("erro", "Erro no login, tente novamente.");
-					response.sendRedirect("index.jsp");
+					conn.close();
+					return "redirect:index.jsp";
 				}
-				conn.close();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
@@ -54,11 +54,13 @@ public class LoginCommand implements Command {
 					session.setAttribute("usuarioLogado", u);
 					session.setAttribute("mensagem", "Bem vindo Usuario!");
 					System.out.println("Entrou no LoginUsuario");
-					response.sendRedirect("usuario/loginSucess.jsp");
+					conn.close();
+					return "redirect:usuario/dashboard_usuario.jsp";
 				}else{
-					response.sendRedirect("index.jsp");
+					conn.close();
+					return "redirect:index.jsp";
+			
 				}
-				conn.close();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}

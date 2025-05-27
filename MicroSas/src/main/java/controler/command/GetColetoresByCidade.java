@@ -18,7 +18,7 @@ public class GetColetoresByCidade implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         String cidade = request.getParameter("cidade");
         int pagina = 1;
 

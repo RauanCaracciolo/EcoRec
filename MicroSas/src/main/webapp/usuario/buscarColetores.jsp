@@ -67,7 +67,8 @@ int paginaAtual = session.getAttribute("paginaAtual") != null ? (Integer) sessio
 				<div class="col-md-6 mb-4">
 					<div class="card shadow-sm h-100">
 						<div class="card-body text-center">
-							<img src="../fotos/<%=c.getImagem()%>"
+							<img src="../Imagens?nome=<%= c.getImagem() %>"
+
 								class="rounded-circle mb-3" width="100" height="100"
 								alt="Foto do coletor">
 							<h5 class="card-title">

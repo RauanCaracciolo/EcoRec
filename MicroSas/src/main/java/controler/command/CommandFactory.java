@@ -32,6 +32,8 @@ public class CommandFactory {
 					return new SolicitarHorarioCommand();
 				case"ListarPedidos":
 					return new ListarPedidosCommand();
+				case"Logout":
+					return new LogoutCommand();
 				default: return new DefaultCommand();
 			}	
 		}
