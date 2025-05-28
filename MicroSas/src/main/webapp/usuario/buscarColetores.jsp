@@ -94,7 +94,6 @@ int paginaAtual = session.getAttribute("paginaAtual") != null ? (Integer) sessio
 			}
 			%>
 
-			<!-- Paginação -->
 			<div class="d-flex justify-content-center align-items-center mt-4">
 				<form action="../FrontController" method="get" class="me-2">
 					<input type="hidden" name="command" value="GetColetoresByCidade">
@@ -116,7 +115,7 @@ int paginaAtual = session.getAttribute("paginaAtual") != null ? (Integer) sessio
 					<input type="hidden" name="cidade" value="<%=cidade%>"> <input
 						type="hidden" name="pagina" value="<%=paginaAtual + 1%>">
 					<%
-					if (coletores != null && coletores.size() == 5) {
+					if (coletores != null && coletores.size() == 6) {
 					%>
 					<button type="submit" class="btn btn-outline-secondary">Próxima</button>
 					<%

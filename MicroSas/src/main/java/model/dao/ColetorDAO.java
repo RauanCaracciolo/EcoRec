@@ -54,8 +54,8 @@ public class ColetorDAO {
 	}
 	public List<Coletor> getColetorByCidade(Connection conn, String cidade, int pagina){
 		List<Coletor> lista = new ArrayList<>();
-		int offset = (pagina-1)*5;
-		String sql = "select * from coletores where cidade = ? limit  5 offset ?";
+		int offset = (pagina-1)*6;
+		String sql = "select * from coletores where cidade = ? limit  6 offset ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, cidade);

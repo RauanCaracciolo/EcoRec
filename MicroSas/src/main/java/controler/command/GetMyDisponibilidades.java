@@ -21,7 +21,7 @@ public class GetMyDisponibilidades implements Command {
         if (coletor != null) {
             try (Connection conn = ConnectionFactory.getConnection()) {
                 DisponibilidadeDAO dao = new DisponibilidadeDAO();
-                List<Disponibilidade> lista = dao.listarPorColetor(conn, coletor.getCpf());
+                List<Disponibilidade> lista = dao.listarLivresPorColetor(conn, coletor.getCpf());
                 request.getSession().setAttribute("disponibilidades", lista);
                 return "redirect:coletor/disponibilidades.jsp";
             } catch (Exception e) {
