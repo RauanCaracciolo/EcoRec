@@ -17,6 +17,7 @@
             <div class="card-body">
                 <h3 class="card-title mb-4">Olá, <%= coletor.getNome() %>!</h3>
                 <a href="disponibilidades.jsp" class="btn btn-green me-2">Gerenciar Disponibilidades</a>
+                <a href="../FrontController?command=GetPedidos" class="btn btn-green me-2">Gerenciar Log</a>
                 <a href="../FrontController?command=Logout" class="btn btn-outline-danger">Sair</a>
             </div>
         </div>

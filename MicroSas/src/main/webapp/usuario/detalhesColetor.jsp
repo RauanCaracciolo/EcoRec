@@ -24,11 +24,7 @@
                         <% for (Disponibilidade d : horarios) { %>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <%= d.getHorario() %>
-                                <form action="../FrontController" method="post" class="mb-0">
-                                    <input type="hidden" name="command" value="SolicitarHorario">
-                                    <input type="hidden" name="id_disponibilidade" value="<%= d.getId() %>">
-                                    <button type="submit" class="btn btn-green">Solicitar</button>
-                                </form>
+                                <button type="button" class="btn btn-green" onclick="abrirModal(<%= d.getId() %>)">Solicitar</button>
                             </li>
                         <% } %>
                     </ul>
@@ -38,5 +34,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="descricaoModal" tabindex="-1" aria-labelledby="descricaoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="formDescricao" action="../FrontController" method="post">
+          <input type="hidden" name="command" value="SolicitarHorario">
+          <input type="hidden" name="id_disponibilidade" id="inputDisponibilidadeId">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="descricaoModalLabel">Descreva seu pedido</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea class="form-control" name="descricao" id="descricao" required></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function abrirModal(idDisponibilidade) {
+          document.getElementById('inputDisponibilidadeId').value = idDisponibilidade;
+          const modal = new bootstrap.Modal(document.getElementById('descricaoModal'));
+          modal.show();
+      }
+    </script>
 </body>
 </html>

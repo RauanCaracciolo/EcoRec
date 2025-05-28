@@ -34,6 +34,8 @@ public class CommandFactory {
 					return new ListarPedidosCommand();
 				case"Logout":
 					return new LogoutCommand();
+				case"AtualizarEstadoPedido":
+					return new AtualizarEstadoPedidoCommand();
 				default: return new DefaultCommand();
 			}	
 		}

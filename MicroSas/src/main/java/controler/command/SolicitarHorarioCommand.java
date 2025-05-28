@@ -18,6 +18,8 @@ public class SolicitarHorarioCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idDisponibilidade = Integer.parseInt(request.getParameter("id_disponibilidade"));
+        String descricaoInformada = request.getParameter("descricao");
+
         Usuario u = (Usuario) request.getSession().getAttribute("usuarioLogado");
         String email = u.getEmail();
 
@@ -34,17 +36,24 @@ public class SolicitarHorarioCommand implements Command {
                 return "erro.jsp";
             }
 
+            String enderecoCompleto = String.format("%s, %s, %s, %s", 
+                u.getCidade(), u.getCep(), u.getRua(), u.getNumero());
+
+            String descricaoFinal = enderecoCompleto + ": " + descricaoInformada;
+
             Pedido pedido = new Pedido(
                 idDisponibilidade,
                 email,
                 disp.getCpfColetor(),
-                "Solicitação de agendamento",
+                descricaoFinal,
                 disp.getHorario(),
                 "solicitado"
             );
+
             pDao.cadastrar(conn, pedido);
             disp.setEstado("reservado");
             dDao.atualizar(conn, disp);
+
             conn.commit();
             response.sendRedirect("FrontController?command=VerColetor&cpf=" + disp.getCpfColetor());
             return null;
